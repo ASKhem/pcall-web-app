@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Console&display=swap');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+    font-family: 'Console', monospace;
+}
+  
