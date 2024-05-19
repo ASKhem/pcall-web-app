@@ -1,7 +1,7 @@
 function ImageToBlurBackground({imgSrc, altText, companyName, mainText, text}) {
     return (
         <>
-            <div className="relative w-full h-44 lg:aspect-square group bg-gray-200 overflow-hidden shadow-xl p-3">
+            <div className="relative w-full h-44 lg:aspect-square group bg-gray-200 overflow-hidden shadow-xl p-3 rounded-xl">
                 <img src={imgSrc} alt={altText} className="absolute w-full h-full inset-0 object-cover" />
                     <div
                         className="absolute inset-0 w-full h-full rounded-3xl bg-black bg-opacity-0 transition duration-500 backdrop-filter group-hover:bg-opacity-20 group-hover:backdrop-blur">
