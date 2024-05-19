@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { FaSpaceAwesome, FaSquare } from 'react-icons/fa6';
 import ImageToMovement from '@/components/effects/ImageToMovement';
+import GalleryHome from '@/components/gallery/GalleryHome';
+import ImageToBlurBackground from '@/components/effects/ImageToBlurBackground';
 
 function Home() {
   return (
@@ -79,10 +81,67 @@ function Home() {
             <h2>How we work</h2>
           </div>
         </div>
-        <div className="lg:w-11/12 w-full p-5 sm:p-8 lg:text-lg text-sm">
-          <div className="columns-1 lg:gap-10 gap-5 lg:columns-2 [&>div:not(:first-child)]:mt-8">
+        <GalleryHome />
+      </section>
+      <section className="flex flex-col items-center justify-center w-full py-10 bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500">
+        <div className="flex flex-col w-11/12 gap-5 border-b border-b-custom-blue font-bold">
+          <div className="flex items-center w-full text-2xl gap-5 lg:text-5xl">
+            <FaSquare />
+            <h2>Our Sponsors</h2>
           </div>
+          <p className="w-full text-sm lg:w-6/12 lg:text-base pb-5">
+            We are proud to have the support of the best brands in the industry, who provide us with the best components and equipment to build the best PCs
+          </p>
+        </div>
+        <div className="lg:w-11/12 w-full p-5 sm:p-8 lg:text-lg text-sm flex items-center justify-center">
+          <div className="w-full columns-1 lg:gap-10 gap-5 lg:columns-3 [&>div:not(:first-child)]:mt-8">
+            <ImageToBlurBackground
+              imgSrc="/img/sponsors/razerLogo.png" altText="razer image"
+              companyName="RAZER" mainText="Elevate Your Gaming Setup"
+              text="Our partnership with Razer ensures top-notch peripherals for your custom PC"
+            />
+            <ImageToBlurBackground
+              imgSrc="/img/sponsors/amdLogo.png" altText="amd image"
+              companyName="AMD" mainText="Unleash the Power"
+              text="AMD processors and graphics cards deliver unrivaled performance in our builds"
+            />
+            <ImageToBlurBackground
+              imgSrc="/img/sponsors/corsairLogo.png" altText="corsair image"
+              companyName="CORSAIR" mainText="Reliability Meets Style"
+              text="Corsair components add reliability and style to our custom PCs"
+            />
+            <ImageToBlurBackground
+              imgSrc="/img/sponsors/samsungLogo.png" altText="samsung image"
+              companyName="SAMSUNG" mainText="Cutting-Edge Storage Solutions"
+              text="Samsung SSDs and memory modules provide fast and reliable storage for your build"
+            />
+            <ImageToBlurBackground
+              imgSrc="/img/sponsors/msiLogo.png" altText="msi image"
+              companyName="MSI" mainText="Engineered for Performance"
+              text="MSI motherboards and graphics cards are engineered for top-tier performance"
+            />
+            <ImageToBlurBackground
+              imgSrc="/img/sponsors/nvidiaLogo.png" altText="nvidia image"
+              companyName="NVIDIA" mainText="Experience Cutting-Edge Graphics"
+              text="Our partnership with NVIDIA brings you the latest and greatest in graphics technology"
+            />
+            <ImageToBlurBackground
+              imgSrc="/img/sponsors/tempestLogo.png" altText="tempest image"
+              companyName="TEMPEST" mainText="Cool Under Pressure"
+              text="Tempest cooling solutions keep your custom PC running cool and quiet"
+            />
+            <ImageToBlurBackground
+              imgSrc="/img/sponsors/intelLogo.png" altText="intel image"
+              companyName="INTEL" mainText="Powerful Computing"
+              text="Intel processors provide powerful computing performance for your custom build"
+            />
+            <ImageToBlurBackground
+              imgSrc="/img/sponsors/hyperXLogo.png" altText="hyperx image"
+              companyName="HYPER X" mainText="Upgrade Your Memory"
+              text="HyperX memory modules offer fast and reliable performance for your PC"
+            />
           </div>
+        </div>
       </section>
     </main>
   );
