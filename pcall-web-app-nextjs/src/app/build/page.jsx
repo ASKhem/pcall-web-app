@@ -54,7 +54,6 @@ function BuildNewPcPage() {
     });
 
     let total = totalPrice(computerForm);
-    let progress = progressBar(computerForm);
 
     let component = findFormComponentByCategory(category, computerForm);
 
@@ -71,9 +70,9 @@ function BuildNewPcPage() {
     }
 
     return (
-        <div className="w-full justify-center items-center flex flex-col gap-4 sm:gap-10">
-            <div className="relative w-full min-h-screen p-4 sm:p-10 bg-gradient-to-bl from-black via-zinc-950 to-zinc-800 flex flex-col items-center justify-center text-zinc-200">
-                <img src="/img/backgrounds/build-background.svg" alt="Imagen fondo build" className="text-sm w-full h-full object-cover absolute" />
+        <div className="w-full justify-center items-center flex flex-col gap-4 sm:gap-10 bg-gradient-to-bl from-black via-zinc-950 to-zinc-800">
+            <div className="relative w-full min-h-screen p-4 sm:p-10  flex flex-col items-center justify-center text-zinc-200">
+                <img src="/img/backgrounds/build-background.png" alt="Imagen fondo build" className="text-sm w-full h-full object-cover absolute" />
                 <div className="w-full sm:w-11/12 flex flex-col items-center justify-left text-xl sm:text-5xl gap-2 sm:gap-5 z-10">
                     <div className="flex w-full h-fit pb-2 sm:pb-3">
                         <div className="flex w-full sm:w-5/12 items-center">

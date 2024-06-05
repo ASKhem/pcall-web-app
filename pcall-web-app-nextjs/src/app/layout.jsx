@@ -11,13 +11,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className ="w-full"> 
+      <body className="w-full">
         <Header />
         <Socials />
-        <div className ="space h-16 w-full"/>
+        <div className="space h-16 w-full" />
         {children}
         <Footer />
-        </body>
+      </body>
     </html>
   );
 }

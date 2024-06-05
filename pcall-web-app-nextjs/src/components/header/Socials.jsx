@@ -1,14 +1,16 @@
 "use client";
 import { useState } from "react";
 
+const socialUrl = "/img/header/socials-panel/";
 const socialsData = [
-    { href: "#", src: "/img/header/socials-panel/facebook.png", alt: "facebook" },
-    { href: "#", src: "/img/header/socials-panel/instagram.png", alt: "instagram" },
-    { href: "#", src: "/img/header/socials-panel/whatsapp.png", alt: "whatsapp" },
-    { href: "#", src: "/img/header/socials-panel/youtube.png", alt: "youtube" },
-    { href: "#", src: "/img/header/socials-panel/x.png", alt: "x" },
-    { href: "#", src: "/img/header/socials-panel/phone.png", alt: "phone" },
+    { href: "#", src: `${socialUrl}facebook.png`, alt: "facebook" },
+    { href: "#", src: `${socialUrl}instagram.png`, alt: "instagram" },
+    { href: "#", src: `${socialUrl}whatsapp.png`, alt: "whatsapp" },
+    { href: "#", src: `${socialUrl}youtube.png`, alt: "youtube" },
+    { href: "#", src: `${socialUrl}x.png`, alt: "x" },
+    { href: "#", src: `${socialUrl}phone.png`, alt: "phone" },
 ];
+
 export default function Socials() {
     const [isHovered, setIsHovered] = useState(false);
 
@@ -26,9 +28,8 @@ export default function Socials() {
                 ))}
             </div>
             <div
-                className={`h-56 w-6 flex justify-center items-center flex-col bg-custom-blue border border-gray-800 border-l-0 rounded-r-lg ${
-                    isHovered ? 'hidden' : ''
-                }`}
+                className={`h-56 w-6 flex justify-center items-center flex-col bg-custom-blue border border-gray-800 border-l-0 rounded-r-lg ${isHovered ? 'hidden' : ''
+                    }`}
             >
                 <a className="text-white flex justify-center items-center w-full h-full">
                     S<br />O<br />C<br />I<br />A<br />L<br />S

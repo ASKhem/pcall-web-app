@@ -1,4 +1,5 @@
 import Gallery from "./GalleryCard";
+import SpiralText from "@/components/effects/ScrambleText";
 
 function componentCategoryConversion(component) {
   const componentMap = {
@@ -19,15 +20,15 @@ function componentCategoryConversion(component) {
   return component ? (componentMap[component.category] || "") : "";
 }
 
-function GalleryComponent({ selectCategory, component, pcForm}) {
+function GalleryComponent({ selectCategory, component, pcForm }) {
 
   let categoryName = componentCategoryConversion(component);
   return (
     <div className="w-full flex lg:flex-row flex-col items-center justify-between">
       <div className="lg:w-6/12 w-full h-fit p-2">
-        <div className="bg-opacity-50 backdrop-blur-sm relative lg:h-[510px] h-fit text-white w-full  border-2 border-zinc-800  rounded-xl shadow-2xl shadow-black bg-black">
+        <div className="bg-opacity-70 backdrop-blur-sm relative lg:h-[510px] h-fit text-white w-full  border-2 border-zinc-800  rounded-xl shadow-2xl shadow-black bg-black">
           {/* <img src="/img/galleryComponent/gcAnimation.gif" alt="Imagen de la construcción de un PC" className="text-sm w-full h-full object-cover absolute rounded-xl" /> */}
-          {component && (
+          {component ? (
             <div className="text-lg flex flex-col items-center justify-between w-full h-full rounded-xl">
               <div className="relative flex w-full h-2/3 items-center justify-between p-10 backdrop-filter bg-opacity-20 rounded-t-xl gap-5">
                 <div class="relative overflow-hidden bg-cover bg-no-repeat rounded-xl">
@@ -42,7 +43,8 @@ function GalleryComponent({ selectCategory, component, pcForm}) {
                 <p>{component.releaseYear}</p>
               </div>
             </div>
-          )}
+          ) : (<SpiralText text="Start now" />)
+          }
         </div>
       </div>
       <div className="lg:w-7/12 w-full h-full flex p-2 flex-items-center justify-center">

@@ -14,14 +14,14 @@ async function loadComponentsData(category) {
         const data = await res.json();
         return data;
     } catch (error) {
-        console.error('An error occurred while fetching the data:', error);
+        console.error('An error occurred while getting the data:', error);
         return null;
     }
 }
 
 function ComponentsCategory({ category, addComponent }) {
     const [data, setData] = useState(null);
-    
+
     useEffect(() => {
         loadComponentsData(category).then(setData);
     }, [category]);
@@ -32,9 +32,9 @@ function ComponentsCategory({ category, addComponent }) {
 
     if (data === null) {
         return (
-            <div className="flex items-center justify-center gap-5 text-custom-blue">
-                <div className="border-gray-300 h-16 w-16 animate-spin rounded-full border-8 border-t-custom-blue" />
-                <p className ="text-lg">Loading data ...</p>
+            <div className="flex items-center justify-center gap-5 text-zinc-200">
+                <div className="border-gray-300 h-16 w-16 animate-spin rounded-full border-8 border-t-zinc-700" />
+                <p className="text-lg">Loading data ...</p>
             </div>
         )
 
