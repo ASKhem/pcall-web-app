@@ -4,20 +4,17 @@ import Link from 'next/link';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { IoHome } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
-import { TbWorld } from "react-icons/tb";
 import { HiMenuAlt4 } from "react-icons/hi";
 import Logout from '@/components/user/Logout';
 
 export default function Header() {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const session = sessionStorage.getItem('username');
         if (session) {
             setUser(session);
         }
-        setLoading(false);
     }, []);
 
     return (
@@ -35,17 +32,19 @@ export default function Header() {
             </div>
             <div className="h-full lg:flex hidden items-center justify-center gap-3">
                 <Link href="/"><IoHome className="text-[26px] transition-colors duration-200 hover:text-orange-500 cursor-pointer" /></Link>
-                <TbWorld className="text-[26px] transition-colors duration-200 hover:text-orange-500 cursor-pointer" />
                 <FaRegQuestionCircle className="text-2xl transition-colors duration-200 hover:text-orange-500 cursor-pointer" />
-                {user && <p>{user} <Logout /></p>}
-                {
-                    !loading && !user && (
-                        <div className="flex gap-5">
-                            <Link href="/auth/login" className="text-black font-bold transition-colors duration-200 bg-zinc-200 py-1 px-3 rounded-lg hover:invert active:scale-95">Log In</Link>
-                            <Link href="/auth/register" className="text-zinc-200 font-bold transition-colors duration-200 hover:text-zinc-200 hover:bg-black bg-orange-700 py-1 px-3 rounded-lg active:scale-95">Sign Up</Link>
-                        </div>
-                    )
-                }
+                <div className="min-w-[165px]">
+                    {user && <p >{user} <Logout /></p>}
+                    {
+                        !user && (
+                            <div className="flex gap-5">
+                                <Link href="/auth/login" className="text-black font-bold transition-colors duration-200 bg-zinc-200 py-1 px-3 rounded-lg hover:bg-zinc-100 active:scale-95">Log In</Link>
+                                <Link href="/auth/register" className="text-zinc-200 font-bold transition-colors duration-200 hover:text-zinc-200 hover:bg-orange-600  bg-orange-700 py-1 px-3 rounded-lg active:scale-95">Sign Up</Link>
+                            </div>
+                        )
+                    }
+                </div>
+
             </div>
             <div className="h-64 lg:hidden flex items-center justify-center relative">
                 <label htmlFor="small-menu" className="cursor-pointer">

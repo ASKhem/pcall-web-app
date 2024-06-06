@@ -6,6 +6,7 @@ import Socials from '@/components/header/Socials';
 export const metadata = {
   title: "PC ALL",
   description: "Build a PC",
+  favicon: "/favicon.ico",
 };
 
 export default function RootLayout({ children }) {

@@ -1,9 +1,8 @@
 "use client"
 import { useState } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
-import axiosInstance from '@/utils/axiosConfig';
 import { useRouter } from 'next/navigation';
+import { loginUser, fetchUserInfo } from '@/utils/authUtils';
 
 function Login() {
     const [emailOrUsername, setEmailOrUsername] = useState('');
@@ -15,38 +14,14 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:9090/api/auth/signin', {
-                username: emailOrUsername,
-                password,
-            });
-
-            const { accessToken, user } = response.data;
-            sessionStorage.setItem('accessToken', JSON.stringify({ accessToken, user }));
-            console.log('Login successful');
+            const { accessToken, user } = await loginUser(emailOrUsername, password);
             setUserInfo(user);
-            fetchUserInfo(accessToken);
+            await fetchUserInfo(accessToken);
             window.location.href = '/';
         } catch (error) {
-            console.error('Error logging in', error);
-            setError('Your username or password is incorrect');
+            setError(error.message);
         }
     };
-
-    const fetchUserInfo = async (token) => {
-        try {
-            const response = await axiosInstance.get('/user/userinfo', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            setUserInfo(response.data);
-            console.log('User info:', response.data);
-            sessionStorage.setItem('username', response.data.username);
-        } catch (error) {
-            console.error('Error fetching user info', error);
-        }
-    };
-
 
     return (
         <div>

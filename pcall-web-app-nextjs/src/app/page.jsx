@@ -42,29 +42,29 @@ function Home() {
           </p>
         </div>
         <div className="lg:w-11/12 w-full p-5 sm:p-8 lg:text-lg text-sm">
-          <div className="columns-1 lg:gap-10 gap-5 xl:columns-4 lg:columns-2 [&>div:not(:first-child)]:mt-8">
-            <div className="w-full h-fit flex flex-col items-center justify-center gap-5">
+          <div className="lg:gap-10 gap-5 grid lg:grid-cols-4 grid-cols-2">
+            <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
               <ImageToMovement
                 imageSrc="/img/effects/imagesToMovement/img1.png"
                 gifSrc="/img/effects/imagesToMovement/img1Movement.gif"
               />
               <p>Build a new Pc</p>
             </div>
-            <div className="w-full h-fit flex flex-col items-center justify-center gap-5">
+            <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
               <ImageToMovement
                 imageSrc="/img/effects/imagesToMovement/img2.png"
                 gifSrc="/img/effects/imagesToMovement/img2Movement.gif"
               />
-              <p>Build with seccond hand components</p>
+              <p>Build with second hand components</p>
             </div>
-            <div className="w-full h-fit flex flex-col items-center justify-center gap-5">
+            <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
               <ImageToMovement
                 imageSrc="/img/effects/imagesToMovement/img3.png"
                 gifSrc="/img/effects/imagesToMovement/img3Movement.gif"
               />
-              <p>Use seccond hand components and help the environment</p>
+              <p>Use second hand components and help the environment</p>
             </div>
-            <div className="w-full h-fit flex flex-col items-center justify-center gap-5">
+            <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
               <ImageToMovement
                 imageSrc="/img/effects/imagesToMovement/img4.png"
                 gifSrc="/img/effects/imagesToMovement/img4Movement.gif"
@@ -93,13 +93,8 @@ function Home() {
             We are proud to have the support of the best brands in the industry, who provide us with the best components and equipment to build the best PCs
           </p>
         </div>
-        <div className="lg:w-11/12 w-full p-5 sm:p-8 lg:text-lg text-sm flex items-center justify-center">
-          <div className="w-full columns-1 lg:gap-10 gap-5 lg:columns-3 [&>div:not(:first-child)]:mt-8">
-            <ImageToBlurBackground
-              imgSrc="/img/sponsors/razerLogo.png" altText="razer image"
-              companyName="RAZER" mainText="Elevate Your Gaming Setup"
-              text="Our partnership with Razer ensures top-notch peripherals for your custom PC"
-            />
+        <div className="lg:w-9/12 w-full p-5 sm:p-8 lg:text-lg text-sm flex items-center justify-center">
+          <div className="w-full grid lg:grid-cols-4 lg:gap-10 gap-5 grid-cols-2">
             <ImageToBlurBackground
               imgSrc="/img/sponsors/amdLogo.png" altText="amd image"
               companyName="AMD" mainText="Unleash the Power"
