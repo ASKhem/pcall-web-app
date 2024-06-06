@@ -99,7 +99,7 @@ function BuildNewPcPage() {
                     </div>
                 </div>
             </div>
-            <div className="relative w-full sm:w-11/12 min-h-48 sm:min-h-96 h-fit flex items-center justify-center border-t-2 border-custom-blue py-8 sm:py-14">
+            <div className="relative w-full sm:w-11/12 min-h-48 sm:min-h-96 h-fit flex items-center justify-center pb-10">
                 <ComponentsCategory category={category} addComponent={handleComponent} />
             </div>
         </div>

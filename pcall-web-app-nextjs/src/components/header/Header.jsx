@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { IoHome } from "react-icons/io5";
-import { RxCross2 } from "react-icons/rx";
-import { HiMenuAlt4 } from "react-icons/hi";
 import Logout from '@/components/user/Logout';
+import HamburguerMenu from '@/components/header/HamburguerMenu';
 
 export default function Header() {
     const [user, setUser] = useState(null);
@@ -16,6 +15,8 @@ export default function Header() {
             setUser(session);
         }
     }, []);
+
+    const categories = ["build", "recycle", "gallery", "about"];
 
     return (
         <header className="fixed z-20 t-0 flex w-full h-16 bg-custom-blue grid-rows-1 items-center justify-between px-[5vw] text-zinc-200 backdrop-opacity-60 border-b border-zinc-800">
@@ -44,25 +45,8 @@ export default function Header() {
                         )
                     }
                 </div>
-
             </div>
-            <div className="h-64 lg:hidden flex items-center justify-center relative">
-                <label htmlFor="small-menu" className="cursor-pointer">
-                    <input type="checkbox" id="small-menu" className="peer hidden" />
-                    <HiMenuAlt4 className="text-[40px] active:scale-95 cursor-pointer rounded-full border border-zinc-800 p-1 peer-checked:hidden" />
-                    <RxCross2 className="text-[40px] active:scale-95 cursor-pointer rounded-full border border-zinc-800 p-1 hidden peer-checked:block" />
-                    <nav className="absolute right-0 mt-8 py-5 w-44 bg-custom-blue bg-opacity-90 backdrop-blur-xl rounded-md shadow-lg hidden peer-checked:block">
-                        <ul className="items-center justify-center">
-                            <li className="px-4 py-2 hover:bg-gray-800"><Link href="/auth/login">Login</Link></li>
-                            <li className="px-4 py-2 hover:bg-gray-800"><Link href="/build">Build Now</Link></li>
-                            <li className="px-4 py-2 hover:bg-gray-800"><Link href="/">Recycle</Link></li>
-                            <li className="px-4 py-2 hover:bg-gray-800"><Link href="/">Gallery</Link></li>
-                            <li className="px-4 py-2 hover:bg-gray-800"><Link href="/">About</Link></li>
-                        </ul>
-                    </nav>
-                </label>
-                <label htmlFor="small-menu" className="fixed inset-0 cursor-default peer-checked:hidden"></label>
-            </div>
+            <HamburguerMenu categories={categories} />
         </header>
     );
 }

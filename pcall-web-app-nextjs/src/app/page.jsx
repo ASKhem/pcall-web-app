@@ -19,7 +19,7 @@ function Home() {
             <div className="flex flex-col items-center justify-center gap-10 rounded-lg">
               <p className="mt-6 text-sm lg:text-lg">CHOOSE THE COMPONENTS, WE BUILD IT FOR YOU</p>
               <Link
-                href="/"
+                href="/build"
                 className="inline-flex items-center w-fit px-4 py-2 mt-3 font-medium bg-orange-600 rounded-lg animate-bounce focus:animate-none hover:animate-none"
               >
                 <span className="flex items-center gap-2 ml-2">

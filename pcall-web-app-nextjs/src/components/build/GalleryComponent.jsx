@@ -26,17 +26,16 @@ function GalleryComponent({ selectCategory, component, pcForm }) {
   return (
     <div className="w-full flex lg:flex-row flex-col items-center justify-between">
       <div className="lg:w-6/12 w-full h-fit p-2">
-        <div className="bg-opacity-70 backdrop-blur-sm relative lg:h-[510px] h-fit text-white w-full  border-2 border-zinc-800  rounded-xl shadow-2xl shadow-black bg-black">
-          {/* <img src="/img/galleryComponent/gcAnimation.gif" alt="Imagen de la construcción de un PC" className="text-sm w-full h-full object-cover absolute rounded-xl" /> */}
+        <div className="bg-opacity-70 backdrop-blur-sm relative lg:h-[510px] h-[300px] text-white w-full  border-2 border-zinc-200 rounded-xl shadow-2xl shadow-black bg-black">
           {component ? (
             <div className="text-lg flex flex-col items-center justify-between w-full h-full rounded-xl">
-              <div className="relative flex w-full h-2/3 items-center justify-between p-10 backdrop-filter bg-opacity-20 rounded-t-xl gap-5">
+              <div className="relative flex w-full h-2/3 items-center justify-between lg:p-10 p-5 backdrop-filter bg-opacity-20 rounded-t-xl gap-5">
                 <div class="relative overflow-hidden bg-cover bg-no-repeat rounded-xl">
-                  <img src={`http://localhost:9090/images/components/${component.image}.png`} alt={component.model} className="text-sm w-64 h-64rounded-xl ransition duration-300 ease-in-out hover:scale-110" />
+                  <img src={`http://localhost:9090/images/components/${component.image}.png`} alt={component.model} className="text-sm lg:w-64 w-52 rounded-xl ransition duration-300 ease-in-out hover:scale-110" />
                 </div>
                 <h2 className="flex items-center justify-center text-center lg:text-5xl text-2xl w-1/2">{categoryName}</h2>
               </div>
-              <div className="relative bg-black h-1/3 w-full p-10 backdrop-filter bg-opacity-20 backdrop-blur rounded-b-xl">
+              <div className="lg:text-sm text-xs relative bg-black h-1/3 w-full lg:p-10 p-5 backdrop-filter bg-opacity-20 backdrop-blur rounded-b-xl">
                 <p>{component.brand} {component.model}</p>
                 <p>{component.details}</p>
                 <p>{component.price}€</p>
