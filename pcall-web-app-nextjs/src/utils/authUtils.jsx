@@ -1,35 +1,37 @@
 import axios from 'axios';
 import axiosInstance from '@/utils/axiosConfig';
 
-export const loginUser = async (emailOrUsername, password) => {
+export const loginUser = async (username, password) => {
     try {
         const response = await axios.post('http://localhost:9090/api/auth/signin', {
-            username: emailOrUsername,
+            username,
             password,
         });
 
-        const { accessToken, user } = response.data;
-        sessionStorage.setItem('accessToken', JSON.stringify({ accessToken, user }));
-        console.log('Login successful');
+        const { accessToken, id, name, email, profileUrl, rol } = response.data;
+        if (!accessToken) {
+            throw new Error('Invalid response from server');
+        }
+
+        const user = { id, name, email, profileUrl, rol };
+
+        sessionStorage.setItem('accessToken', accessToken);
+        sessionStorage.setItem('user', JSON.stringify(user));
         return { accessToken, user };
     } catch (error) {
-        console.error('Error logging in', error);
         throw new Error('Your username or password is incorrect');
     }
 };
 
 export const fetchUserInfo = async (token) => {
     try {
-        const response = await axiosInstance.get('/user/userinfo', {
+        const response = await axiosInstance.get('/admin/users/userinfo', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         });
-        console.log('User info:', response.data);
-        sessionStorage.setItem('username', response.data.username);
         return response.data;
     } catch (error) {
-        console.error('Error fetching user info', error);
         throw error;
     }
 };

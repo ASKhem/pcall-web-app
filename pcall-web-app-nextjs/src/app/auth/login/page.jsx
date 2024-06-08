@@ -1,23 +1,24 @@
 "use client"
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { loginUser, fetchUserInfo } from '@/utils/authUtils';
 
 function Login() {
-    const [emailOrUsername, setEmailOrUsername] = useState('');
+    const [username, setusername] = useState('');
     const [password, setPassword] = useState('');
-    const [userInfo, setUserInfo] = useState(null);
     const [error, setError] = useState(null);
-    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { accessToken, user } = await loginUser(emailOrUsername, password);
-            setUserInfo(user);
+            const { accessToken, user } = await loginUser(username, password);
             await fetchUserInfo(accessToken);
-            window.location.href = '/';
+            console.log(user);
+            if (user.rol === 'ROLE_ADMIN') {
+                window.location.href = '/admin/home';
+            } else {
+                window.location.href = '/';
+            }
         } catch (error) {
             setError(error.message);
         }
@@ -34,8 +35,8 @@ function Login() {
                             type="text"
                             placeholder="Email or Username"
                             className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
-                            value={emailOrUsername}
-                            onChange={(e) => setEmailOrUsername(e.target.value)}
+                            value={username}
+                            onChange={(e) => setusername(e.target.value)}
                         />
                     </div>
 
@@ -59,15 +60,6 @@ function Login() {
                     </p>
                 </section>
             </form>
-
-            {userInfo && (
-                <div className="user-info">
-                    <h2>User Information</h2>
-                    <p>Username: {userInfo.username}</p>
-                    <p>Email: {userInfo.email}</p>
-                    {/* Render other user info as needed */}
-                </div>
-            )}
         </div>
     );
 }
