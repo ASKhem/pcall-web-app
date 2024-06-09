@@ -23,6 +23,7 @@ export const loginUser = async (username, password) => {
     }
 };
 
+
 export const fetchUserInfo = async (token) => {
     try {
         const response = await axiosInstance.get('/admin/users/userinfo', {

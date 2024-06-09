@@ -2,11 +2,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { loginUser, fetchUserInfo } from '@/utils/authUtils';
+import { useRouter } from 'next/navigation';
 
 function Login() {
     const [username, setusername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,9 +17,15 @@ function Login() {
             await fetchUserInfo(accessToken);
             console.log(user);
             if (user.rol === 'ROLE_ADMIN') {
-                window.location.href = '/admin/home';
+                router.push('/admin/home');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 100);
             } else {
-                window.location.href = '/';
+                router.back();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 100);
             }
         } catch (error) {
             setError(error.message);

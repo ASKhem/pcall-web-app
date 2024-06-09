@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 async function loadComponentsData(category) {
     try {
-        const res = await fetch(`http://localhost:9090/component/list/${category}`);
+        const res = await fetch(`http://localhost:9090/admin/components/list/${category}`);
 
         if (!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`);

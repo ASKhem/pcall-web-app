@@ -47,7 +47,7 @@ export default function Header() {
                     <div className="h-full lg:flex hidden items-center justify-center gap-3">
                         <Link href="/"><IoHome className="text-[26px] transition-colors duration-200 hover:text-orange-500 cursor-pointer" /></Link>
                         <FaRegQuestionCircle className="text-2xl transition-colors duration-200 hover:text-orange-500 cursor-pointer" />
-                        <div>
+                        <div className="flex items-center gap-5">
                             {user && <img src={user.profileUrl} alt="User profile" className="w-10 h-10 rounded-full" />}
                             {
                                 !user && (
