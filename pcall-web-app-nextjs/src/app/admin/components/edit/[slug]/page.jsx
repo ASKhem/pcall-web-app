@@ -3,9 +3,11 @@ import { fetchEntity } from "@/api/api"
 import { useEffect, useState } from "react"
 import { endpoints } from "@/api/endpoints"
 import { updateEntity } from "@/api/api"
+import { useRouter } from "next/navigation"
 
 export default function Articlepage({ params }) {
     console.log(endpoints)
+    const router = useRouter()
     const [component, setComponent] = useState({
         id: '',
         brand: '',
@@ -44,6 +46,7 @@ export default function Articlepage({ params }) {
         e.preventDefault()
         console.log('Datos actualizados:', component)
         updateEntity({ entity: "components", id: component.id, data: component })
+        router.push('/admin/components')
     }
 
     const brands = ['Asus', 'MSI', 'Gigabyte', 'AMD', 'Intel', 'Samsung', 'WesternDigital', 'Kingston', 'Seagate', 'Zotac', 'Corsair', 'NZXT', 'CoolerMaster', 'Creative', 'BeQuiet', 'Seasonic', 'Noctua', 'DeepCool']

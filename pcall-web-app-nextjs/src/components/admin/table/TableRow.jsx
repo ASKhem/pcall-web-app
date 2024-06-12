@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import endpoints from '@/api/endpoints';
 
-export default function TableRow({ row, columns, deleteEntity, entity }) {
+export default function TableRow({ row, columns, deleteEntity, entity, setDelivered }) {
     const [confirmDelete, setConfirmDelete] = useState(false);
-
+    console.log(row)
     const handleDelete = async () => {
         try {
             await deleteEntity({ entity: entity, id: row.id });
@@ -13,6 +13,15 @@ export default function TableRow({ row, columns, deleteEntity, entity }) {
             console.error('Error deleting entity:', error);
         } finally {
             setConfirmDelete(false);
+        }
+    };
+
+    const handleSetDelivered = async () => {
+        try {
+            await setDelivered(row.id);
+            window.location.reload();
+        } catch (error) {
+            console.error('Error setting delivered:', error);
         }
     };
 
@@ -28,7 +37,11 @@ export default function TableRow({ row, columns, deleteEntity, entity }) {
                                 <img src={`${col.basePath}/${row[col.field]}.png`} alt={row[col.altField]} className="w-16 h-16" />
                             )
                         ) : (
-                            row[col.field]
+                            col.field === 'address' ?
+                                `${row.address}, ${row.city}, ${row.state}, ${row.zip}` :
+                                col.field === 'delivered' ?
+                                    row.delivered ? 'true' : 'false' :
+                                    typeof row[col.field] === 'object' ? row[col.field].username : row[col.field]
                         )}
                     </div>
                 );
@@ -39,6 +52,12 @@ export default function TableRow({ row, columns, deleteEntity, entity }) {
                         <button className="bg-green-600 text-white px-4 py-1 rounded-md hover:bg-green-700 active:scale-95" onClick={handleDelete}>Aceptar</button>
                         <button className="bg-gray-600 text-white px-4 py-1 rounded-md hover:bg-gray-700 active:scale-95" onClick={() => setConfirmDelete(false)}>Cancelar</button>
                     </>
+                ) : entity === 'orders' ? (
+                    row.delivered ? (
+                        <button className="bg-green-600 text-white px-4 py-1 rounded-md hover:bg-green-700 active:scale-95">delivered</button>
+                    ) : (
+                        <button className="bg-red-600 text-white px-4 py-1 rounded-md hover:bg-red-700 active:scale-95" onClick={handleSetDelivered}>Set delivered</button>
+                    )
                 ) : (
                     <>
                         <Link href={`/admin/${entity}/edit/${row.id}`}>

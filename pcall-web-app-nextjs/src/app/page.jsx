@@ -41,40 +41,39 @@ function Home() {
             PC, sell your old one, or just check out our gallery of completed builds
           </p>
         </div>
-        <div className="lg:w-11/12 w-full p-5 sm:p-8 lg:text-lg text-sm">
-          <div className="lg:gap-10 gap-5 grid lg:grid-cols-4 grid-cols-2">
+        <div className="lg:w-11/12 w-full p-5 sm:p-8 lg:text-lg text-sm flex items-center justify-center">
+          <div className="lg:gap-10 gap-5 grid lg:grid-cols-3 grid-cols-1 w-10/12 ">
             <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
-              <ImageToMovement
-                imageSrc="/img/effects/imagesToMovement/img1.png"
-                gifSrc="/img/effects/imagesToMovement/img1Movement.gif"
-              />
-              <p>Build a new Pc</p>
+              <Link href="/build">
+                <ImageToMovement
+                  imageSrc="/img/effects/imagesToMovement/img1.png"
+                  gifSrc="/img/effects/imagesToMovement/img1Movement.gif"
+                />
+                <p>Build a new Pc</p>
+              </Link>
             </div>
             <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
-              <ImageToMovement
-                imageSrc="/img/effects/imagesToMovement/img2.png"
-                gifSrc="/img/effects/imagesToMovement/img2Movement.gif"
-              />
-              <p>Build with second hand components</p>
+              <Link href="/build">
+                <ImageToMovement
+                  imageSrc="/img/effects/imagesToMovement/img3.png"
+                  gifSrc="/img/effects/imagesToMovement/img3Movement.gif"
+                />
+                <p>Use second hand components and help the environment</p>
+              </Link>
             </div>
             <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
-              <ImageToMovement
-                imageSrc="/img/effects/imagesToMovement/img3.png"
-                gifSrc="/img/effects/imagesToMovement/img3Movement.gif"
-              />
-              <p>Use second hand components and help the environment</p>
-            </div>
-            <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
-              <ImageToMovement
-                imageSrc="/img/effects/imagesToMovement/img4.png"
-                gifSrc="/img/effects/imagesToMovement/img4Movement.gif"
-              />
-              <p>See the gallery</p>
+              <Link href="/gallery">
+                <ImageToMovement
+                  imageSrc="/img/effects/imagesToMovement/img4.png"
+                  gifSrc="/img/effects/imagesToMovement/img4Movement.gif"
+                />
+                <p>See the gallery</p>
+              </Link>
             </div>
           </div>
         </div>
       </section>
-      <section className="text-zinc-200 flex flex-col items-center justify-center w-full py-10 bg-gradient-to-bl from-black via-zinc-950 to-zinc-800">
+      <section className="text-zinc-200 flex flex-col items-center justify-center w-full py-10 bg-gradient-to-bl from-black via-zinc-950 to-zinc-800" id="how-we-work">
         <div className="flex flex-col w-11/12 gap-5 border-b border-b-zinc-200 font-bold pb-5">
           <div className="flex items-center w-full text-2xl gap-5 lg:text-5xl">
             <FaSquare />
@@ -83,7 +82,7 @@ function Home() {
         </div>
         <GalleryHome />
       </section>
-      <section className="flex flex-col items-center justify-center w-full py-10 bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500">
+      <section className="flex flex-col items-center justify-center w-full py-10 bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500" id="sponsors">
         <div className="flex flex-col w-11/12 gap-5 border-b border-b-custom-blue font-bold">
           <div className="flex items-center w-full text-2xl gap-5 lg:text-5xl">
             <FaSquare />

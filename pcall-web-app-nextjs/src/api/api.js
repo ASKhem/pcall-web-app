@@ -66,6 +66,9 @@ export const updateEntity = async ({ entity, id, data }) => {
 
 export const createEntity = async ({ entity, data }) => {
     const token = sessionStorage.getItem('accessToken');
+    console.log(data)
+    console.log(entity)
+    console.log(token)
     if (!token) {
         throw new Error('No access token found');
     }
@@ -83,4 +86,39 @@ export const createEntity = async ({ entity, data }) => {
     }
 };
 
-
+export const setDelivered = async ({ id }) => {
+    const token = sessionStorage.getItem('accessToken');
+    if (!token) {
+        throw new Error('No access token found');
+    }
+    try {
+        const response = await axios.put(`http://localhost:9090/admin/orders/setDelivered/${id}`, {}, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error setting delivered:', error);
+        throw error;
+    }
+}
+export const getOrdersByEmail = async ({ email }) => {
+    const token = sessionStorage.getItem('accessToken');
+    if (!token) {
+        throw new Error('No access token found');
+    }
+    try {
+        const response = await axios.get(`http://localhost:9090/admin/orders/getByEmail/${email}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error getting orders by email:', error);
+        throw error;
+    }
+}

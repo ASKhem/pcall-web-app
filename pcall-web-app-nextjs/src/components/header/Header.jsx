@@ -17,7 +17,6 @@ export default function Header() {
             try {
                 const parsedUser = JSON.parse(storedUser);
                 setUser(parsedUser);
-                console.log(parsedUser);
                 if (parsedUser.rol === "ROLE_ADMIN") {
                     setIsAdmin(true);
                 }
@@ -27,7 +26,7 @@ export default function Header() {
         }
     }, []);
 
-    const categories = ["build", "recycle", "gallery", "about"];
+    const categories = ["build", "gallery"];
 
     return (
         <>
@@ -38,9 +37,7 @@ export default function Header() {
                         <nav className="lg:flex hidden">
                             <ul className="flex gap-5 px-2 font-bold">
                                 <li className="transition-colors duration-200 hover:text-orange-500"><Link href="/build">Build Now</Link></li>
-                                <li className="transition-colors duration-200 hover:text-orange-500"><Link href="/">Recycle</Link></li>
-                                <li className="transition-colors duration-200 hover:text-orange-500"><Link href="/">Gallery</Link></li>
-                                <li className="transition-colors duration-200 hover:text-orange-500"><Link href="/">About</Link></li>
+                                <li className="transition-colors duration-200 hover:text-orange-500"><Link href="/gallery">Gallery</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -48,7 +45,7 @@ export default function Header() {
                         <Link href="/"><IoHome className="text-[26px] transition-colors duration-200 hover:text-orange-500 cursor-pointer" /></Link>
                         <FaRegQuestionCircle className="text-2xl transition-colors duration-200 hover:text-orange-500 cursor-pointer" />
                         <div className="flex items-center gap-5">
-                            {user && <img src={user.profileUrl} alt="User profile" className="w-10 h-10 rounded-full" />}
+                            {user && <Link href="/user/order"><img src={user.profileUrl} alt="User profile" className="w-10 h-10 rounded-full" /></Link>}
                             {
                                 !user && (
                                     <div className="flex gap-5">

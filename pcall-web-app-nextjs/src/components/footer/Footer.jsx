@@ -1,43 +1,38 @@
 import { IoIosArrowRoundForward } from "react-icons/io";
+import Link from "next/link";
 
 function Footer() {
   return (
     <>
       <footer className="w-full bg-gradient-to-l from-custom-blue to-slate-800 flex flex-col items-center justify-center lg:py-10 py-5 text-zinc-200 lg:text-sm text-xs">
-        <div className="w-11/12 h-fit flex items-center justify-between border-b border-zinc-700 lg:pb-5 pb-2">
-          <div className="lg:w-5/12 w-7/12 flex items-center justify-between gap-5">
-            <img src="/img/brand/pcallLogo.svg" alt="logo" className="w-28 lg:flex hidden" />
-            <p className=""> We are a company that builds the best PCs in the market, we have the best components and the best prices</p>
-          </div>
-          <div className="lg:w-7/12 w-5/12 flex items-center justify-end h-full py-3">
-            <button className="bg-slate-900 text-white px-4 py-2 rounded-lg flex gap-2 items-center justify-center active:scale-95 lg:hover:text-orange-500 lg:active:text-white transition-all duration-200 ">
-              Contact us<IoIosArrowRoundForward className="text-3xl" />
-            </button>
-          </div>
-        </div>
         <div className="w-11/12 h-fit flex flex-col lg:flex-row items-center justify-between border-b border-zinc-700 lg:pb-5 lg:py-5 py-2">
-          <div className="lg:w-5/12 w-full flex items-center justify-between gap-5 py-5">
+          <div className="lg:w-5/12 w-full flex items-center justify-between gap-5">
             <ul className="text-white flex flex-col gap-3">
               <li className="font-bold lg:text-lg text:sm border-b border-gray-700">Services</li>
-              <li>Build Now</li>
-              <li>Disccounts</li>
-              <li>Recycle</li>
-              <li>Gallery</li>
+              <Link href="/build">
+                <li>Build Now</li>
+              </Link>
+              <Link href="/gallery">
+                <li>Gallery</li>
+              </Link>
             </ul>
             <ul className="text-white flex flex-col gap-3 ">
-              <li className="font-bold  lg:text-lg text:sm border-b border-gray-700">Company</li>
-              <li>About us</li>
-              <li>Team</li>
-              <li>Sponsors</li>
-              <li>Sustainability</li>
+              <li className="font-bold  lg:text-lg text:sm border-b border-gray-700">About us</li>
+              <Link href="/#how-we-work">
+                <li>How we work</li>
+              </Link>
+              <Link href="/#sponsors">
+                <li>Sponsors</li>
+              </Link>
             </ul>
-            <ul className="text-white flex flex-col gap-3">
-              <li className="font-bold lg:text-lg text:sm border-b border-gray-700">Contact</li>
-              <li>Phone</li>
-              <li>Email</li>
-              <li>Location</li>
-              <li>FAQ</li>
-            </ul>
+            <Link href="/location">
+              <ul className="text-white flex flex-col gap-3">
+                <li className="font-bold lg:text-lg text:sm border-b border-gray-700">Contact</li>
+                <li>Phone</li>
+                <li>Email</li>
+                <li>Location</li>
+              </ul>
+            </Link>
           </div>
           <div className="lg:w-7/12 w-full flex items-center justify-end h-full py-3">
             <div className="lg:w-9/12 w-full flex-col justify-end">

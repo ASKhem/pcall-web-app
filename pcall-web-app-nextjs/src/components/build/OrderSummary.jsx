@@ -30,7 +30,7 @@ function OrderSummary({ computerForm, total, onConfirm, onCancel, phone, setPhon
                         <p>Total: {total}€</p>
                     </div>
                 </div>
-                <div className="w-4/12 min-h-96 h-fit flex flex-col items-center justify-center pb-10 lg:gap-16 gap-5">
+                <div className="w-4/12 min-h-96 h-fit flex flex-col items-center justify-center lg:gap-16 gap-5">
                     <div className="w-full flex flex-col items-center justify-start gap-5">
                         <h2 className="text-2xl font-bold">Order Details</h2>
                         <div className="w-full flex flex-col items-center justify-center gap-5">

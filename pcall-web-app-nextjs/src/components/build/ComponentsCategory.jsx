@@ -1,6 +1,7 @@
 "use client"
-import BuildPcCard from "./BuildPcCard";
 import React, { useState, useEffect } from 'react';
+import BuildPcCard from "./BuildPcCard";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 async function loadComponentsData(category) {
     try {
@@ -21,7 +22,8 @@ async function loadComponentsData(category) {
 function ComponentsCategory({ category, addComponent }) {
     const [data, setData] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
+    const [filters, setFilters] = useState({ brand: '', state: '' });
+    const itemsPerPage = 8;
 
     useEffect(() => {
         loadComponentsData(category).then(setData);
@@ -32,7 +34,7 @@ function ComponentsCategory({ category, addComponent }) {
     }
 
     function handleNextPage() {
-        if (currentPage < Math.ceil(data.length / itemsPerPage)) {
+        if (currentPage < Math.ceil(filteredData.length / itemsPerPage)) {
             setCurrentPage(currentPage + 1);
         }
     }
@@ -41,6 +43,12 @@ function ComponentsCategory({ category, addComponent }) {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
+    }
+
+    function handleFilterChange(e) {
+        const { name, value } = e.target;
+        setFilters(prevFilters => ({ ...prevFilters, [name]: value }));
+        setCurrentPage(1);
     }
 
     if (data === null) {
@@ -52,31 +60,68 @@ function ComponentsCategory({ category, addComponent }) {
         )
     }
 
+    const filteredData = data.filter(component => {
+        return (
+            (filters.brand === '' || component.brand === filters.brand) &&
+            (filters.state === '' || component.state === filters.state)
+        );
+    });
+
     const startIndex = (currentPage - 1) * itemsPerPage;
-    const selectedData = data.slice(startIndex, startIndex + itemsPerPage);
+    const selectedData = filteredData.slice(startIndex, startIndex + itemsPerPage);
+    const brands = data ? [...new Set(data.map(component => component.brand))] : [];
+    const states = data ? [...new Set(data.map(component => component.state))] : [];
+
+    const restartPage = () => {
+        setCurrentPage(1);
+        setFilters({ brand: '', state: '' });
+    }
 
     return (
-        <div className="flex flex-col items-center">
-            <div className="flex justify-center items-center w-full mb-4 gap-5 ">
-                <button onClick={handlePrevPage} disabled={currentPage === 1} className="px-4 py-1 bg-gray-300 rounded disabled:opacity-50">
-                    Prev
+        <div className="flex flex-col items-center gap-10 min-h-screen" id="components">
+            <div className="flex lg:flex-row flex-col items-center justify-between gap-2">
+                <div className="lg:hidden flex justify-center items-center w-full mb-4 gap-5">
+                    <button onClick={handlePrevPage} disabled={currentPage === 1} className="px-4 py-1 bg-gray-300 rounded disabled:opacity-50">
+                        Prev
+                    </button>
+                    <span className="text-lg text-zinc-200"> {currentPage}/{Math.ceil(filteredData.length / itemsPerPage)}</span>
+                    <button onClick={handleNextPage} disabled={currentPage === Math.ceil(filteredData.length / itemsPerPage)} className="px-4 py-1 bg-gray-300 rounded disabled:opacity-50">
+                        Next
+                    </button>
+                </div>
+                <div className="flex lg:flex-row flex-col justify-center items-center w-full mb-4 gap-5">
+                    <select name="brand" value={filters.brand} onChange={handleFilterChange} className="px-4 py-2 bg-gray-300 rounded w-48">
+                        {brands.map((brand) => {
+                            return <option value={brand}>{brand}</option>
+                        })}
+                    </select>
+                    <select name="state" value={filters.state} onChange={handleFilterChange} className="px-4 py-2 bg-gray-300 rounded w-48">
+                        {states.map((state) => {
+                            return <option value={state}>{state}</option>
+                        })}
+                    </select>
+                </div>
+            </div>
+            <div className="flex justify-center items-center gap-5">
+                <button onClick={handlePrevPage} disabled={currentPage === 1} className="lg:flex hidden px-4 py-4 bg-gray-300 rounded disabled:opacity-50">
+                    <IoIosArrowBack />
                 </button>
-                <span className="text-lg text-zinc-200"> {currentPage}/{Math.ceil(data.length / itemsPerPage)}</span>
-                <button onClick={handleNextPage} disabled={currentPage === Math.ceil(data.length / itemsPerPage)} className="px-4 py-1 bg-gray-300 rounded disabled:opacity-50">
-                    Next
+                <div className="lg:w-10/12 w-full justify-center items-center grid lg:grid-cols-4 grid-cols-1 grid-rows-auto lg:gap-10 gap-5 " onClick={restartPage}>
+                    {selectedData.map((component) => {
+                        return (
+                            <div key={component.id} className="flex justify-center items-center" onClick={() => handleComponent(component)}>
+                                <BuildPcCard data={component} />
+                            </div>
+                        );
+                    })}
+                </div>
+                <button onClick={handleNextPage} disabled={currentPage === Math.ceil(filteredData.length / itemsPerPage)} className="lg:flex hidden px-4 py-4 bg-gray-300 rounded disabled:opacity-50">
+                    <IoIosArrowForward />
                 </button>
             </div>
-            <div className="lg:w-11/12 w-full justify-center items-center grid lg:grid-cols-5 grid-cols-1 grid-rows-auto gap-5">
-                {selectedData.map((component) => {
-                    return (
-                        <div key={component.id} className="flex justify-center items-center" onClick={() => handleComponent(component)}>
-                            <BuildPcCard data={component} />
-                        </div>
-                    );
-                })}
-            </div>
+
         </div>
     )
 }
 
-export default ComponentsCategory
+export default ComponentsCategory;

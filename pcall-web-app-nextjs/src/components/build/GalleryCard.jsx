@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 const componentsList = ["Case", "Motherboard", "CPU", "GPU", "RAM", "NVMe", "Hard_Drive", "CPUCooling", "Power_Supply", "Cooling_Fan", "Network_Card", "Sound_Card"];
 
@@ -40,24 +41,45 @@ function Gallery({ selectCategory, componentsInfo }) {
     );
 }
 
+
 function GalleryCard({ name, imgSrc, selected, onItemClick, componentInfo }) {
     return (
-        <div
-            className={`h-28 relative w-full overflow-hidden shadow-lg shadow-black drop-shadow-sm rounded-xl border-2 ${selected ? "border-orange-600" : "border-zinc-800"}`}
-            onClick={onItemClick}
-        >
-            <img src={imgSrc} alt={name} className="absolute w-full h-full inset-0 object-cover text-sm" />
-            <div className={`absolute inset-0 w-full h-full bg-black transition duration-500 backdrop-filter ${selected || componentInfo ? "bg-opacity-20 backdrop-blur" : "bg-opacity-0"}`} />
-            <div className="absolute inset-x-5 text-white">
-                <h2 className="text-2xl font-semibold mb-2">{name}</h2>
-                {componentInfo && (
-                    <div>
-                        <p className="text-sm">{componentInfo.brand} {componentInfo.model}</p>
-                        <p className="text-sm">{componentInfo.price}€</p>
-                    </div>
-                )}
+        componentInfo ? (
+            <div
+                className={`h-28 relative w-full overflow-hidden shadow-lg shadow-black drop-shadow-sm rounded-xl border-2 ${selected ? "border-orange-600" : "border-zinc-800"}`}
+                onClick={onItemClick}
+            >
+                <img src={imgSrc} alt={name} className="absolute w-full h-full inset-0 object-cover text-sm" />
+                <div className={`absolute inset-0 w-full h-full bg-black transition duration-500 backdrop-filter ${selected || componentInfo ? "bg-opacity-20 backdrop-blur" : "bg-opacity-0"}`} />
+                <div className="absolute inset-x-5 text-white">
+                    <h2 className="text-2xl font-semibold mb-2">{name}</h2>
+                    {componentInfo && (
+                        <div>
+                            <p className="text-sm">{componentInfo.brand} {componentInfo.model}</p>
+                            <p className="text-sm">{componentInfo.price}€</p>
+                        </div>
+                    )}
+                </div>
             </div>
-        </div>
+        ) : (
+            <Link href="#components"
+            >
+                <div className={`h-28 relative w-full overflow-hidden shadow-lg shadow-black drop-shadow-sm rounded-xl border-2 ${selected ? "border-orange-600" : "border-zinc-800"}`}
+                    onClick={onItemClick}>
+                    <img src={imgSrc} alt={name} className="absolute w-full h-full inset-0 object-cover text-sm" />
+                    <div className={`absolute inset-0 w-full h-full bg-black transition duration-500 backdrop-filter ${selected || componentInfo ? "bg-opacity-20 backdrop-blur" : "bg-opacity-0"}`} />
+                    <div className="absolute inset-x-5 text-white">
+                        <h2 className="text-2xl font-semibold mb-2">{name}</h2>
+                        {componentInfo && (
+                            <div>
+                                <p className="text-sm">{componentInfo.brand} {componentInfo.model}</p>
+                                <p className="text-sm">{componentInfo.price}€</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </Link>
+        )
     );
 }
 
