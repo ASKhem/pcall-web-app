@@ -14,7 +14,6 @@ export const fetchEntity = async ({ entity, request }) => {
                     'Accept': 'application/json',
                 },
             });
-            console.log(response.data);
             return response.data;
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -33,6 +32,26 @@ export const deleteEntity = async ({ entity, id }) => {
 
     try {
         const response = await axios.delete(`http://localhost:9090/admin/${entity}/delete/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting entity:', error);
+        throw error;
+    }
+};
+
+export const deleteUser = async () => {
+    const token = sessionStorage.getItem('accessToken');
+    if (!token) {
+        throw new Error('No access token found');
+    }
+
+    try {
+        const response = await axios.delete(`http://localhost:9090/admin/users/delete`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json',

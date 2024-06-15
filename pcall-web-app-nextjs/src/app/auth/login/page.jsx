@@ -34,8 +34,8 @@ function Login() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className="w-10/12 flex items-center justify-center text-custom-blue">
-                <section className="flex w-[30rem] flex-col gap-12">
+            <form onSubmit={handleSubmit} className="lg:w-10/12 w-full flex items-center justify-center text-custom-blue">
+                <section className="flex lg:w-[30rem] w-[20] flex-col gap-12 justify-center">
                     <div className="text-center lg:text-5xl text-3xl font-bold">Log In</div>
                     {error && <p className="text-red-500">{error}</p>}
                     <div className="w-full transform border-b-2 border-custom-blue bg-transparent text-lg duration-300 focus-within:border-orange-500">

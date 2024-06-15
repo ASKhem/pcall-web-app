@@ -14,7 +14,7 @@ export default function UsersList() {
     const [currentPage, setCurrentPage] = useState(1)
     const itemsPerPage = 7
     const [filters, setFilters] = useState({
-        username: '', email: '', rol: ''
+        username: '', email: ''
     })
 
     const headers = [
@@ -40,7 +40,6 @@ export default function UsersList() {
         const fetchData = async () => {
             try {
                 const data = await fetchEntity({ entity: "users", request: "list" })
-                console.log(data)
                 setTableData(data)
             } catch (error) {
                 console.error('Error fetching data:', error)
@@ -68,14 +67,7 @@ export default function UsersList() {
 
     return (
         <div className="w-11/12 flex flex-col items-center justify-start min-h-screen h-full py-10">
-            <div className="w-full flex mb-4 justify-between relative z-10">
-                <div className="w-1/6">
-                    <Link href="/admin/users/add">
-                        <button className="bg-zinc-300 hover:bg-zinc-400 text-zinc-800 font-bold py-2 px-4 rounded">
-                            Add User
-                        </button>
-                    </Link>
-                </div>
+            <div className="w-full flex mb-4 justify-end relative z-10">
                 <details className="w-1/12">
                     <summary className="cursor-pointer p-2 border rounded bg-gray-100 text-gray-700">Filters</summary>
                     <div className="w-2/12 grid grid-cols-1 justify-center mt-2 gap-4 p-4 bg-white border rounded shadow-md absolute right-4 top-16">

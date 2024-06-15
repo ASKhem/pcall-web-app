@@ -3,7 +3,8 @@ import { useState, useEffect } from "react"
 import { getOrdersByEmail } from "@/api/api"
 import CustomerOrderDetails from "@/components/build/CustomerOrderDetails"
 
-export default function OrderUser() {
+export default function OrderUser({ params }) {
+    const { slug } = params
     const [orders, setOrders] = useState([])
     const user = JSON.parse(sessionStorage.getItem('user'));
     const { email } = user;
@@ -25,7 +26,7 @@ export default function OrderUser() {
             <h1 className="text-2xl font-bold text-zinc-200">Your Orders</h1>
             <div className="w-full flex flex-col gap-10">
                 {orders.map((order) => (
-                    <CustomerOrderDetails key={order.id} order={order} />
+                    <CustomerOrderDetails key={order.id} order={order} type={slug} />
                 ))}
             </div>
         </div>

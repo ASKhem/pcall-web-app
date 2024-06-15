@@ -91,13 +91,13 @@ function ComponentsCategory({ category, addComponent }) {
                 </div>
                 <div className="flex lg:flex-row flex-col justify-center items-center w-full mb-4 gap-5">
                     <select name="brand" value={filters.brand} onChange={handleFilterChange} className="px-4 py-2 bg-gray-300 rounded w-48">
-                        {brands.map((brand) => {
-                            return <option value={brand}>{brand}</option>
+                        {brands.map((brand, index) => {
+                            return <option key={index} value={brand}>{brand}</option>
                         })}
                     </select>
                     <select name="state" value={filters.state} onChange={handleFilterChange} className="px-4 py-2 bg-gray-300 rounded w-48">
-                        {states.map((state) => {
-                            return <option value={state}>{state}</option>
+                        {states.map((state, index) => {
+                            return <option key={index} value={state}>{state}</option>
                         })}
                     </select>
                 </div>

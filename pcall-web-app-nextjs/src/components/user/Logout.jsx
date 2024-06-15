@@ -1,5 +1,4 @@
 "use client";
-import { IoLogOutSharp } from "react-icons/io5";
 
 export default function Logout() {
 
@@ -10,8 +9,8 @@ export default function Logout() {
     };
 
     return (
-        <button onClick={handleLogout} className=" text-3xl text-white hover:text-red-500">
-            <IoLogOutSharp />
+        <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-sm">
+            Logout
         </button>
     );
 }

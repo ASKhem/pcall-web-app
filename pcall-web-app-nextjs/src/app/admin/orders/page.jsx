@@ -7,7 +7,8 @@ import TableHeader from "@/components/admin/table/TableHeader"
 import TableRow from "@/components/admin/table/TableRow"
 import { deleteEntity, setDelivered } from "@/api/api"
 
-export default function OrdersList() {
+export default function OrdersList({ params }) {
+    const { slug } = params
     const [tableData, setTableData] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const itemsPerPage = 7

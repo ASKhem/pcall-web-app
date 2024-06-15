@@ -1,11 +1,12 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaRegQuestionCircle } from 'react-icons/fa';
 import { IoHome } from "react-icons/io5";
 import Logout from '@/components/user/Logout';
 import HamburguerMenu from '@/components/header/HamburguerMenu';
 import AdminHeader from '@/components/header/AdminHeader';
+import { FaShoppingBasket } from "react-icons/fa";
+import UserMenu from '@/components/header/UserMenu';
 
 export default function Header() {
     const [user, setUser] = useState(null);
@@ -43,9 +44,15 @@ export default function Header() {
                     </div>
                     <div className="h-full lg:flex hidden items-center justify-center gap-3">
                         <Link href="/"><IoHome className="text-[26px] transition-colors duration-200 hover:text-orange-500 cursor-pointer" /></Link>
-                        <FaRegQuestionCircle className="text-2xl transition-colors duration-200 hover:text-orange-500 cursor-pointer" />
-                        <div className="flex items-center gap-5">
-                            {user && <Link href="/user/order"><img src={user.profileUrl} alt="User profile" className="w-10 h-10 rounded-full" /></Link>}
+                        <div className="flex items-center gap-2">
+                            {user &&
+                                <>
+                                    <Link href="/user/order/active" className='flex items-center gap-2'>
+                                        <FaShoppingBasket className="text-2xl transition-colors duration-200 hover:text-orange-500 cursor-pointer" />
+                                    </Link>
+                                    <UserMenu user={user} />
+                                </>
+                            }
                             {
                                 !user && (
                                     <div className="flex gap-5">
@@ -54,14 +61,9 @@ export default function Header() {
                                     </div>
                                 )
                             }
-                            {
-                                user && (
-                                    <Logout />
-                                )
-                            }
                         </div>
                     </div>
-                    <HamburguerMenu categories={categories} />
+                    <HamburguerMenu categories={categories} user={user} />
                 </header>
             }
         </>

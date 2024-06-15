@@ -46,8 +46,8 @@ function Home() {
             <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
               <Link href="/build">
                 <ImageToMovement
-                  imageSrc="/img/effects/imagesToMovement/img1.png"
-                  gifSrc="/img/effects/imagesToMovement/img1Movement.gif"
+                  imageSrc="/img/effects/img1.png"
+                  gifSrc="/img/effects/img1Movement.gif"
                 />
                 <p>Build a new Pc</p>
               </Link>
@@ -55,8 +55,8 @@ function Home() {
             <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
               <Link href="/build">
                 <ImageToMovement
-                  imageSrc="/img/effects/imagesToMovement/img3.png"
-                  gifSrc="/img/effects/imagesToMovement/img3Movement.gif"
+                  imageSrc="/img/effects/img3.png"
+                  gifSrc="/img/effects/img3Movement.gif"
                 />
                 <p>Use second hand components and help the environment</p>
               </Link>
@@ -64,8 +64,8 @@ function Home() {
             <div className="col-span-1 w-full h-fit flex flex-col items-center justify-center gap-5">
               <Link href="/gallery">
                 <ImageToMovement
-                  imageSrc="/img/effects/imagesToMovement/img4.png"
-                  gifSrc="/img/effects/imagesToMovement/img4Movement.gif"
+                  imageSrc="/img/effects/img4.png"
+                  gifSrc="/img/effects/img4Movement.gif"
                 />
                 <p>See the gallery</p>
               </Link>
