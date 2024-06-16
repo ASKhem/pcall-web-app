@@ -23,7 +23,7 @@ export default function OrderUser({ params }) {
 
     return (
         <div className="flex flex-col items-center justify-center py-10 gap-10">
-            <h1 className="text-2xl font-bold text-zinc-200">Your Orders</h1>
+            <h1 className="text-2xl font-bold text-zinc-200">{slug == "active" ? "Active Orders" : "Orders history"}</h1>
             <div className="w-full flex flex-col gap-10">
                 {orders.map((order) => (
                     <CustomerOrderDetails key={order.id} order={order} type={slug} />

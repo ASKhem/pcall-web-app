@@ -53,7 +53,7 @@ const OrderDetails = ({ computerForm, total, phone, address, city, state, zip, c
                                     </div>
                                     <div className="flex w-full justify-between">
                                         <span className="font-semibold">Total:</span>
-                                        <span>{(parseFloat(total) + (parseFloat(total) * 0.05) + ((parseFloat(total) + (parseFloat(total) * 0.05)) * 0.2)).toFixed(2)}€</span>
+                                        <span>{(parseFloat(total) + (parseFloat(total) * 0.05) + ((parseFloat(total) + (parseFloat(total) * 0.05)) * 0.1)).toFixed(2)}€</span>
                                     </div>
                                 </div>
                             </div>
