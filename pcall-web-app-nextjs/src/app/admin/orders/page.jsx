@@ -61,17 +61,13 @@ export default function OrdersList({ params }) {
         fetchData()
     }, [])
 
-    const applyFilters = (data) => {
-        return data.filter(item => {
-            return Object.keys(filters).every(key => {
-                if (!filters[key]) return true;
-                if (key === 'price') {
-                    return item[key] === parseFloat(filters[key]);
-                }
-                return item[key].toLowerCase().includes(filters[key].toLowerCase());
-            });
-        });
-    };
+    const applyFilters = (data) =>
+        data.filter(item =>
+            Object.keys(filters).every(key =>
+                !filters[key] ||
+                (key === 'price' ? item[key] === parseFloat(filters[key]) : String(item[key]).toLowerCase().includes(filters[key].toLowerCase()))
+            )
+        );
 
     const filteredData = applyFilters(tableData)
     const currentItems = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
